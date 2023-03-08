@@ -3,7 +3,7 @@
     <header class="flex items-center justify-between h-16 bg-white shadow">
       <router-link
         :to="{ name: 'home' }"
-        class="px-5 text-xl font-bold text-orange-500"
+        class="px-36 text-xl font-bold text-orange-500"
       >
         Home
       </router-link>

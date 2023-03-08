@@ -45,7 +45,10 @@
           <template v-for="(el, ind) of new Array(20)">
             <li
               class="text-gray-500 text-md"
-              v-if="meal[`strMeasure${ind + 1}`]"
+              v-if="
+                meal[`strMeasure${ind + 1}`] !== ' ' &&
+                meal[`strMeasure${ind + 1}`] !== ''
+              "
             >
               {{ ind + 1 }}. {{ meal[`strMeasure${ind + 1}`] }}
             </li>

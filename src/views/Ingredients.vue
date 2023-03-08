@@ -43,7 +43,7 @@ import { computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import API from "../axios";
 
-const router = useRouter()
+const router = useRouter();
 const keyword = ref("");
 const isLoading = ref(false);
 const ingredietns = ref([]);
@@ -57,12 +57,12 @@ const computedIngredients = computed(() => {
 });
 
 function handleClick(ingredietn) {
-    router.push({
-        name: "byName",
-        params: {
-            ingredietn: ingredietn.strIngredient
-        }
-    })
+  router.push({
+    name: "byIngredient",
+    params: {
+      ingredient: ingredietn.strIngredient,
+    },
+  });
 }
 
 onMounted(() => {

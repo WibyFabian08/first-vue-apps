@@ -22,7 +22,7 @@
           {{ $filters.truncate(meal.strInstructions, 20) }}
         </p>
       </div>
-      <div class="mt-5">
+      <div class="mt-5" v-if="meal.strYoutube">
         <YoutubeButton :url="meal.strYoutube"></YoutubeButton>
       </div>
     </div>

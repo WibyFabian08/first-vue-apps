@@ -4,7 +4,7 @@ const navMenu = [
     label: "Search Meals",
   },
   {
-    name: "home",
+    name: "byLetter",
     label: "Serach By Letter",
   },
   {
