@@ -29,19 +29,19 @@
     </div>
     <div class="flex justify-between w-full px-0 mt-5 md:justify-start">
       <div class="mr-0 text-left md:mr-10">
-        <ul>
+        <ul class="list-disc">
           <template v-for="(el, ind) of new Array(20)">
             <li
               class="text-gray-500 text-md"
               v-if="meal[`strIngredient${ind + 1}`]"
             >
-              {{ ind + 1 }}. {{ meal[`strIngredient${ind + 1}`] }}
+              {{ meal[`strIngredient${ind + 1}`] }}
             </li>
           </template>
         </ul>
       </div>
       <div class="text-left">
-        <ul>
+        <ul class="list-disc">
           <template v-for="(el, ind) of new Array(20)">
             <li
               class="text-gray-500 text-md"
@@ -50,7 +50,7 @@
                 meal[`strMeasure${ind + 1}`] !== ''
               "
             >
-              {{ ind + 1 }}. {{ meal[`strMeasure${ind + 1}`] }}
+             {{ meal[`strMeasure${ind + 1}`] }}
             </li>
           </template>
         </ul>

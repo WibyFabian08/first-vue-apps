@@ -8,19 +8,12 @@
       :type="'text'"
       v-model:model="keyword"
     ></InputText>
-
-    <div
-      v-if="isLoading === true"
-      class="flex items-center justify-center py-20 text-sm text-center text-gray-500 capitalize"
-    >
-      Loading...
-    </div>
   </div>
-  <div v-if="!isLoading && meals.length > 0">
-    <Meals :meals="meals"></Meals>
+  <div v-if="mealsByName.length > 0">
+    <Meals :meals="mealsByName"></Meals>
   </div>
   <div
-    v-else-if="!isLoading || meals.length === 0"
+    v-else-if="mealsByName.length === 0"
     class="flex items-center justify-center text-sm text-center text-gray-500 capitalize"
   >
     Data not found
@@ -30,30 +23,24 @@
 <script setup>
 import InputText from "../components/InputText.vue";
 import Meals from "../components/Meals.vue";
-import { ref, watch } from "vue";
-import API from "../axios";
+import { ref, watch, computed } from "vue";
+import store from "../store/index"
 
 const keyword = ref("");
-const isLoading = ref(false);
-const meals = ref([]);
+const mealsByName = computed(() => {
+  return store.getters.mealsByName
+})
 
 function getMealsbyName(keyword) {
-  isLoading.value = true;
-  API.get(`search.php?s=${keyword}`).then((res) => {
-    if (res.data.meals.length > 0) {
-      meals.value = res.data.meals;
-      isLoading.value = false;
-    } else {
-      (isLoading.value = false), (meals.value = []);
-    }
-  });
+  store.dispatch("searchMealsByName", keyword)
 }
 
 watch(keyword, (value) => {
   if (value.length > 1) {
     getMealsbyName(value);
   } else {
-    meals.value = [];
+    store.commit("setMealsByName", [])
   }
 });
+
 </script>

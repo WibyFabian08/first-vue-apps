@@ -1,3 +1,5 @@
 export default {
-    meals: []
+    mealsByName: [],
+    mealsByLetter: [],
+    activeLetter: null
 }
